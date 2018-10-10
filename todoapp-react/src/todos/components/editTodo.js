@@ -31,7 +31,7 @@ class EditTodo extends Component {
     //Initializes a Empty Todo Object
 
     emptyTodo = () => {
-        return {title: "", description: "", date: moment()}
+        return {title: "", description: "", date: moment(), email: ""}
     }
 
 
@@ -49,6 +49,10 @@ class EditTodo extends Component {
         this.setState({date: event})
     }
 
+    changeNewEmail = (event) =>{
+        this.setState({email: event.target.value})
+    }
+
     // Form submission methods
 
     createTodo = (event) => {
@@ -63,7 +67,7 @@ class EditTodo extends Component {
     // Modifying the inputs indirectly methods
 
     resetTodo = () => {
-        this.setState({title: "", description: "", date: moment()})
+        this.setState({title: "", description: "", date: moment(), email: ""})
     }
     cancelEditing = () => {
         this.props.cancelEditing();
@@ -105,6 +109,14 @@ class EditTodo extends Component {
                     <DatePicker
                         selected={this.getDateForDatePicker()}
                         onChange={this.changeNewDate}/>
+                </Table.Cell>
+
+                <Table.Cell>
+                    <Input
+                    placeholder='Email'
+                    value={this.state.email}
+                    onChange={this.changeNewEmail}
+                    ></Input>
                 </Table.Cell>
 
                 {/* The options component takes the inputs and decide if It's an option for a Edit Todo or Add New Todo */}

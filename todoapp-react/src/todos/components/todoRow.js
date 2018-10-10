@@ -14,6 +14,7 @@ const TodoRow = (props) => {
             <Table.Cell>{props.todo.title}</Table.Cell>
             <Table.Cell>{props.todo.description}</Table.Cell>
             <Table.Cell>{props.todo.date}</Table.Cell>
+            <Table.Cell>{props.todo.email}</Table.Cell>
             <Table.Cell className="options">
                 {props.todo.status != 'done' && <Button className="option-buttons" color='green' onClick={props.completeTodo}>
                     Done
