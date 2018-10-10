@@ -3,6 +3,8 @@ import * as TodoActions from '../actions/todoActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
+import * as emailjs from 'emailjs-com';
+
 import TodoTable from '../components/todoTable';
 
 
@@ -11,7 +13,7 @@ export class TodoContainer extends Component {
     constructor(props) {
         super(props)
     }
-
+     
     // Todo Container methods dispatch the actions to the reducer functions. Ordered by CRUD Order
 
     //Create
@@ -42,6 +44,13 @@ export class TodoContainer extends Component {
         }
     }
     completeTodo = (todo) => {
+        emailjs.init("user_VxuQZcrCevxl09ycmULLF");
+        emailjs.send('contact_service','contact_form', todo)
+        .then(function(response) {
+           console.log('SUCCESS!', response.status, response.text);
+        }, function(err) {
+           console.log('FAILED...', err);
+        });
         this.props.actions.UpdateTodo({...todo, status: 'done'})
     }
 
