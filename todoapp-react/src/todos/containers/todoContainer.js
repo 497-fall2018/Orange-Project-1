@@ -16,7 +16,11 @@ export class TodoContainer extends Component {
 
     //Create
     createTodo = (todo) => {
-        this.props.actions.CreateTodo(todo)
+        if(todo.email.includes('@')){
+            this.props.actions.CreateTodo(todo)
+        }else{
+            alert("Please enter a valid email address.")
+        }
     }
 
 
@@ -31,7 +35,11 @@ export class TodoContainer extends Component {
         this.props.actions.CancelEditing(id)
     }
     editTodo = (todo) => {
-        this.props.actions.UpdateTodo(todo)
+        if(todo.email.includes('@')){
+            this.props.actions.UpdateTodo(todo)
+        }else{
+            alert("Please enter a valid email address.")
+        }
     }
     completeTodo = (todo) => {
         this.props.actions.UpdateTodo({...todo, status: 'done'})

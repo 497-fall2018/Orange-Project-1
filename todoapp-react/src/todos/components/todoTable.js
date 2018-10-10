@@ -16,6 +16,7 @@ const TodoTable = (props) => {
                     <Table.HeaderCell>Title</Table.HeaderCell>
                     <Table.HeaderCell>Description</Table.HeaderCell>
                     <Table.HeaderCell>Date</Table.HeaderCell>
+                    <Table.HeaderCell>Email</Table.HeaderCell>
                     <Table.HeaderCell>Options</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
